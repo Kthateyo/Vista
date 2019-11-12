@@ -54,7 +54,7 @@ export default {
           this.results = response.data.hits;
           this.loading = false;
           this.step = 1;
-        })
+        });
     },
   },
 };
