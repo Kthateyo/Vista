@@ -15,6 +15,11 @@
       <SearchInput @onSearch="handleInput($event)" :dark="step === 1"/>
     </transition>
 
+    <div class="results" >
+      <div v-for="result in results" :key="result.id"
+      :style="`background-image: url(${result.webformatURL})`" class="item"></div>
+    </div>
+
   </div>
 </template>
 
@@ -24,7 +29,7 @@ import Background from './components/Background.vue';
 import Claim from './components/Claim.vue';
 import SearchInput from './components/SearchInput.vue';
 
-const API = 'https://pixabay.com/api/?key=14238039-34193333c5f4e49e957b06950&q=';
+const API = 'https://pixabay.com/api/?key=14238039-34193333c5f4e49e957b06950&per_page=100&q=';
 
 export default {
   name: 'app',
@@ -113,5 +118,26 @@ body {
   color: black;
   font-size: 3.5em;
   font-weight: 600;
+}
+
+.results {
+  margin-top: 50px;
+  width: 1000px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  color: black;
+}
+
+.item {
+  width: 280px;
+  height: 280px;
+  margin: 20px;
+
+  background: center no-repeat;
+  background-size: cover;
 }
 </style>
