@@ -1,10 +1,16 @@
 <template>
-  <input type="text" v-model="searchContent" @keyup.enter="onSearch"/>
+  <input type="text" :class="{dark: dark}" v-model="searchContent" @keyup.enter="onSearch"/>
 </template>
 
 <script>
 export default {
   name: 'SearchInput',
+  props: {
+    dark: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       searchContent: '',
@@ -32,12 +38,20 @@ export default {
     background: none;
     outline: none;
     border: none;
-    border-bottom: 3px solid rgba(255, 255, 255, 0.8);
-    border-radius: 15%;
+    border-bottom: 1px solid rgb(255, 255, 255);
   }
 
   input:focus {
-    border-bottom: 3px solid rgba(255, 255, 255, 1.0);
-    box-shadow: 0px 10px 8px -4px rgba(255, 255, 255, 0.4);
+    box-shadow: 0px 10px 8px -6px rgba(255, 255, 255, 0.6);
+  }
+
+  .dark {
+    margin-top: 50px;
+    border-bottom-color: black;
+    color: black;
+  }
+
+  .dark:focus {
+    box-shadow: 0px 10px 8px -6px rgba(0, 0, 0, 0.4);
   }
 </style>

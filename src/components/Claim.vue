@@ -18,7 +18,7 @@ export default {
   width: fit-content;
 
   margin: auto;
-  margin-top: 30vh;
+  margin-top: 27vh;
   transform: translateY(-50%);
 
   display: flex;
