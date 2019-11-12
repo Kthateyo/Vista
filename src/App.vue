@@ -16,8 +16,8 @@
     </transition>
 
     <div class="results" >
-      <div v-for="result in results" :key="result.id"
-      :style="`background-image: url(${result.webformatURL})`" class="item"></div>
+      <Item v-for="result in results" :key="result.id"
+      :photo="result.webformatURL" :href="result.largeImageURL"/>
     </div>
 
   </div>
@@ -28,6 +28,7 @@ import axios from 'axios';
 import Background from './components/Background.vue';
 import Claim from './components/Claim.vue';
 import SearchInput from './components/SearchInput.vue';
+import Item from './components/Item.vue';
 
 const API = 'https://pixabay.com/api/?key=14238039-34193333c5f4e49e957b06950&per_page=100&q=';
 
@@ -37,6 +38,7 @@ export default {
     Background,
     Claim,
     SearchInput,
+    Item,
   },
   data() {
     return {
@@ -127,14 +129,14 @@ body {
   flex-wrap: wrap;
 
   color: black;
-}
 
-.item {
-  width: 280px;
-  height: 280px;
-  margin: 20px;
+  @media (max-width: 740px) {
+    width: 700px;
+  }
 
-  background: center no-repeat;
-  background-size: cover;
+  @media (max-width: 450px) {
+    width: 410px;
+  }
+
 }
 </style>
