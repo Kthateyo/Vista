@@ -1,5 +1,5 @@
 <template>
-  <div :class="[{flexStart: step === 1}, 'wrapper']">
+  <div id="app" :class="[{flexStart: step === 1}, 'wrapper']">
 
     <transition name="slide">
       <div class="logo" v-if="step === 1">VISTA</div>
