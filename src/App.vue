@@ -1,9 +1,19 @@
 <template>
   <div :class="[{flexStart: step === 1}, 'wrapper']">
 
-    <Background v-if="step === 0"/>
-    <Claim v-if="step === 0"/>
-    <SearchInput @onSearch="handleInput($event)" :dark="step === 1"/>
+    <transition name="slide">
+      <div class="logo" v-if="step === 1">VISTA</div>
+    </transition>
+
+    <transition name="fade">
+      <Background v-if="step === 0"/>
+    </transition>
+
+      <Claim v-if="step === 0"/>
+
+    <transition name="fade">
+      <SearchInput @onSearch="handleInput($event)" :dark="step === 1"/>
+    </transition>
 
   </div>
 </template>
@@ -37,6 +47,8 @@ export default {
       axios.get(`${API}${query}`)
         .then((response) => {
           this.results = response.data.hits;
+          this.loading = false;
+          this.step = 1;
         })
         .catch((error) => {
           console.log(error);
@@ -65,7 +77,9 @@ body {
 .wrapper {
   width: 100%;
   height: 100vh;
-  padding: 30px;
+  padding: 40px;
+
+  position: relative;
 
   display: flex;
   flex-direction: column;
@@ -75,5 +89,29 @@ body {
   &.flexStart {
     justify-content: flex-start
   }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s ease;
+}
+.fade-enter, .fade-leave-to
+/* .component-fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+.slide-enter-active, .slide-leave-active {
+  transition: margin-top .3s ease;
+}
+.slide-enter, .slide-leave-to
+/* .component-fade-leave-active below version 2.1.8 */ {
+  margin-top: -50px;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  color: black;
+  font-size: 3.5em;
+  font-weight: 600;
 }
 </style>
