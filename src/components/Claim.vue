@@ -16,23 +16,17 @@ export default {
 <style scoped>
 .claim {
   width: fit-content;
-
-  margin: auto;
-  margin-top: 27vh;
-  transform: translateY(-50%);
+  margin: 0 auto;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-
 }
 
 .title {
   margin-bottom: 20px;
-
-  font-size: 2.2em;
+  font-size: 3.5em;
   font-weight: 600;
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div :class="[{flexStart: step === 1}, 'wrapper']">
 
     <Background v-if="step === 0"/>
     <Claim v-if="step === 0"/>
@@ -47,21 +47,33 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#app {
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  padding: 30px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: azure;
+  &.flexStart {
+    justify-content: flex-start
+  }
 }
 </style>

@@ -26,10 +26,11 @@ export default {
 
 <style>
   input {
-    width: 225px;
+    width: 250px;
 
     display: block;
-    margin: auto;
+    margin: 0 auto;
+    margin-top: 50px;
 
     color: white;
     text-align: center;
